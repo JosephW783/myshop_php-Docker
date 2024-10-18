@@ -7,10 +7,11 @@ RUN apt-get update \
  && docker-php-ext-install pdo pdo_mysql
 # Copio il file della mia appplicazione nella directory del server
 COPY /src/index.php /var/www/html
-COPY php.ini /usr/local/php/8.3/
+
 # imposto i permessi dei file copiati
 RUN chown -R www-data:www-data /var/www/html
 # Espongo la Porta 80
 EXPOSE 80
-
+# Abilita il modulo Apache di rewrite
+RUN a2enmod rewrite
 
