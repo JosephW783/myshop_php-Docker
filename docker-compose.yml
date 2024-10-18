@@ -1,0 +1,37 @@
+
+services:
+  app:
+    build: .
+    image: php:8.3-apache
+    container_name: myshop_php-docker
+    volumes:
+      - "./src:/var/www/html"
+    ports:
+      - 9080:80
+    depends_on:
+      - db
+    networks:
+      - app-network  
+
+# Servizio MariaDB
+  db:
+    image: mariadb:latest
+    container_name: mariadb
+    environment:
+      MYSQL_DATABASE: myshop
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Sandonaci94
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+# Volumi persistenti per i dati del database
+volumes:
+  db_data: 
+# Rete condivisa tra PHP e MariaDB
+networks:
+  app-network:
+    driver: bridge   
+
+
