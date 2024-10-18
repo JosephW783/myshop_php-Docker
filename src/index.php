@@ -1,8 +1,9 @@
 <?php
-$servername= getenv('localhost');
-$username= getenv('root');
-$password = getenv('Sandonaci94');
-$dbname = getenv('myshop');
+
+$servername= "localhost";
+$username= "root";
+$password = "Sandonaci94";
+$dbname = "myshop";
 
 // Metodo per creare la connessione
 try {
@@ -24,10 +25,10 @@ try {
     $query = $pdo->query("SELECT * FROM utente");
 
     // Estrazione dei dati
-    while ($row = $query->fetch()) {
+    // while ($row = $query->fetch()) {
         // Stampa ogni riga del risultato (ad esempio)
-        echo $row['nome_colonna'] . '<br>';
-    }
+    //    echo $row['nome_colonna'] . '<br>';
+    // }
     
 } catch (PDOException $e) {
     // Gestione dell'errore di connessione
