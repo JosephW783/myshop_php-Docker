@@ -1,7 +1,7 @@
 <?php
 
-$servername= "localhost";
-$dbhost= "mariadb";
+$servername= "mariadb";  // Must be the service name of the database in `docker-compose.yml`
+$dbhost= "localhost";
 $username= "root";
 $password = "Sandonaci94";
 $dbname = "myshop";
@@ -18,7 +18,7 @@ try {
     ];
 
     // Creazione dell'oggetto PDO
-    $pdo = new PDO('mysql:host=mariadb;dbname=$dbname;charset=utf8', $username, $password);
+    $pdo = new PDO('mysql:host=mariadb;dbname=myshop;charset=utf8', $username, $password);
     // Connessione riuscita
     echo "Connessione al database riuscita!";
 
