@@ -20,7 +20,7 @@ services:
     environment:
       MYSQL_DATABASE: myshop
       MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: Sandonaci94
+      MYSQL_PASSWORD: Sandonaci94
     ports:
       - "3306:3306"
     volumes:
@@ -35,5 +35,3 @@ volumes:
 networks:
   app-network:
     driver: bridge   
-
-##

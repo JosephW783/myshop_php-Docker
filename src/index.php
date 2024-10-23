@@ -1,56 +1,56 @@
 <?php
 
-$servername= "mariadb";  // Must be the service name of the database in `docker-compose.yml`
-$dbhost= "localhost";
-$username= "root";
-$password = "Sandonaci94";
-$dbname = "myshop";
+$servername= 'mariadb';  // Must be the service name of the database in `docker-compose.yml`
+$dbhost= 'localhost';
+$dbname = 'myshop';
+$username= 'root';
+$password = 'Sandonaci94';
+
 $charset = 'utf8';
+
+// includo la classe Utente
+// include 'Utente.php';
 
 // Metodo per creare la connessione
 try {
     // Creazione della connessione con PDO
-     // Definizione del DSN (Data Source Name)
-    $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Attiva le eccezioni per gli errori
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Imposta il fetch mode come array associativo
-        PDO::ATTR_EMULATE_PREPARES => false, // Disabilita la preparazione delle query emulata (migliora la sicurezza)
-    ];
-
-    // Creazione dell'oggetto PDO
-    $pdo = new PDO('mysql:host=mariadb;dbname=myshop;charset=utf8', $username, $password);
+    // Definizione del DSN (Data Source Name)
+     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Imposta la modalità di errore
     // Connessione riuscita
     echo "Connessione al database riuscita!";
-
-    // Esegui una query di esempio
-    // $query = $pdo->query("SELECT * FROM utente");
     
-    // Estrazione dei dati
-    // while ($row = $query->fetch()) {
-        // Stampa ogni riga del risultato (ad esempio)
-        //    echo $row['nome_colonna'] . '<br>';
-        // }
-        
-    } catch (PDOException $e) {
-        // Gestione dell'errore di connessione
-        echo 'Errore di connessione al database: ' . $e->getMessage();
+
+   
+    
+
+    
+    // Stampa il risultato
+   // if ($databaseExists) {
+   // echo "Il database '$dbname' esiste.";
+   // }   else {
+   // echo "Il database '$dbname' non esiste.";
+   // }
+
+    // creo un'istanza della classe Utente.php
+    // $utente = new Utente($pdo);
+
+    // Ottengo tutti gli utenti
+    // $utenti = $utente->getUtenti();
+
+    // Mostro tutti gli utenti
+    //foreach($utenti as $user) {
+      //  echo "ID:" . $user['idUtente'] . "- Username:" . $user['username'] . "<br>";
+   // }
+}   
+ catch (PDOException $e) {
+// Gestione dell'errore di connessione
+    echo 'Errore di connessione al database: ' . $e->getMessage();
 }
+
+
+
+
+
+
 // password mariadb 'ciaiciao94'
-
-/*
-$servername = "mariadb";
-$username = "root";
-$password = "ciaociao94";
-$database = "myshop";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
-    }
-catch(PDOException $e)
-    {
-    echo "Connection failed: " . $e->getMessage();
-    }
-    */
