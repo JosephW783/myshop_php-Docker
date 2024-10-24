@@ -1,7 +1,7 @@
 <?php
 
 $servername= 'mariadb';  // Must be the service name of the database in `docker-compose.yml`
-$dbhost= 'localhost';
+// $dbhost= 'localhost';
 $dbname = 'myshop';
 $username= 'root';
 $password = 'Sandonaci94';
@@ -19,6 +19,9 @@ try {
      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Imposta la modalità di errore
     // Connessione riuscita
     echo "Connessione al database riuscita!";
+    
+
+
     
 
    
