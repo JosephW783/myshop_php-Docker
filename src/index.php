@@ -14,21 +14,22 @@ $charset = 'utf8';
 // Metodo per creare la connessione
 try {
     // Creazione della connessione con PDO
-    // Definizione del DSN (Data Source Name)
-     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+     $pdo = new PDO("mysql:host=$servername;dbname=$dbname;charset=$charset", $username, $password);
      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Imposta la modalità di errore
-    // Connessione riuscita
-    echo "Connessione al database riuscita!";
+
+     echo "Connessione al database riuscita!";
     
+    // Eseguo la query
    $table = 'articolo';
    $stmt = $pdo->prepare("SELECT * FROM $table");
    $stmt->execute();
 
    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-   // Controlla se ci sono risultati
+   // Controllo se ci sono risultati e li visualizzo in formato html
    if ($results) {
-    // Visualizza i dati in formato HTML
+
     echo "<h1>Dati estratti dalla tabella '$table'</h1>";
     echo "<table border='1'>";
     echo "<tr>";
@@ -42,8 +43,17 @@ try {
     // Mostra i dati
     foreach ($results as $row) {
         echo "<tr>";
-        foreach ($row as $data) {
+        foreach ($row as $column => $data) {
+            
+            if ($column == 'immagine'){ // Controllo la colonna immagine
+
+                $imageData = base64_encode(($data));
+                echo "<td><img src='data:image/jpeg;base64,$imageData' alt='Immagine' style='width:100px;'/></td>";
+                
+
+            } else{
             echo "<td>" . htmlspecialchars($data) . "</td>";
+            }
         }
         echo "</tr>";
     }

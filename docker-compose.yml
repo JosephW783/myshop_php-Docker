@@ -23,7 +23,7 @@ services:
       MYSQL_PASSWORD: Sandonaci94
       MYSQL_ROOT_PASSWORD: Sandonaci94
     ports:
-      - "3306:3306"
+      - 3307:3306
     volumes:
       - ./db_data:/var/lib/mysql   # dati persistenti del database
     networks:

@@ -4,6 +4,8 @@ FROM php:8.3-apache
 # Installa le estensioni PDO e Mysql
 RUN apt-get update && apt-get install -y \
     default-mysql-client \
+    mariadb-client \
+    mariadb-server \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
@@ -13,9 +15,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql mysqli zip sockets \
-    && docker-php-source delete \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copio il file della mia appplicazione nella directory del server
 COPY /src/index.php /var/www/html/index.php
