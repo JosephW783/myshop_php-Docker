@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copio il file della mia appplicazione nella directory del server
-COPY /src/index.php /var/www/html/index.php
+COPY ./src /var/www/html
 
 # imposto i permessi dei file copiati
 RUN chown -R www-data:www-data /var/www/html
