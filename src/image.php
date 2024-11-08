@@ -22,7 +22,8 @@ if(isset($_GET['idArticolo'])){
             // Check if image is not empty
             if ($immagine) {
                 // Set the content-type header
-                header("Content-Type: image/png");
+                
+                header("Content-Type: image/jpeg");
                 echo $immagine;
             } else {
                 echo "Immagine non trovata.";

@@ -66,7 +66,7 @@ if (isset($_SESSION['session_id'])) {
                                       if (!empty($articolo['immagine'])) {
                                           // Crea un link per visualizzare l'immagine in una nuova finestra
                                           echo '<a href="image.php?idArticolo=' . $articolo['idArticolo'] . '" target="_blank">';
-                                          echo '<img src="data:image/png;base64,' . base64_encode($articolo['immagine']) . '" alt="' . htmlspecialchars($articolo['nome'], ENT_QUOTES, 'UTF-8') . '" style="width: 100px; cursor: pointer;">';
+                                          echo '<img src="data:image/jpeg;base64,' . base64_encode($articolo['immagine']) . '" alt="' . htmlspecialchars($articolo['nome'], ENT_QUOTES, 'UTF-8') . '" style="width: 100px; cursor: pointer;">';
                                           echo '</a>';
                                       } else {
                                           echo 'Nessuna immagine disponibile';
