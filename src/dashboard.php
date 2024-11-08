@@ -10,7 +10,5 @@ if (isset($_SESSION['session_id'])) {
     $session_id = htmlspecialchars($_SESSION['session_id']);
     
     // Mostra un messaggio di benvenuto
-    // echo "<h1>Benvenuto $session_user!</h1>";
-   // echo "<p>Il tuo session ID è: $session_id</p>";
+     echo "<h1>Benvenuto $session_user!</h1>";
 }
-   // echo "<p><a href='logout.php'>Logout</a></p>";

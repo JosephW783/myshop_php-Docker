@@ -20,6 +20,8 @@ if (isset($_POST['login'])) {
         
         if (!$user || password_verify($password, $user['password']) === false) {
             $msg = 'Credenziali utente errate %s';
+            header('Location:login.html');
+            exit;
         } else {
             session_regenerate_id();
             $_SESSION['session_id'] = session_id();
@@ -27,6 +29,6 @@ if (isset($_POST['login'])) {
             
             header('Location: dashboard.php');
             exit;
-        }
-    }
+        } 
+    } 
 }
