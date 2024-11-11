@@ -1,8 +1,8 @@
 <?php
-session_start();
+//session_start();
 
 include 'dbConnection.php';
-include 'login.html';
+include 'login.php';
 
 if (isset($_SESSION['session_id'])) {
     header('Location: dashboard.php');
