@@ -1,12 +1,13 @@
 <?php
 session_start(); // Avvia la sessione
+include 'dbConnection.php';
 
-// include 'dbConnection.php'; // Include la connessione al database
 // Verifica se la sessione è attiva
 if (isset($_SESSION['session_id'])) {
     // Recupera i dati della sessione
     $session_user = htmlspecialchars($_SESSION['session_user'], ENT_QUOTES, 'UTF-8');
     $session_id = htmlspecialchars($_SESSION['session_id']);
+    $session_user_id = $_SESSION['session_user_id'];
     
     // Mostra un messaggio di benvenuto
      echo "<h1>Benvenuto $session_user!</h1>";
@@ -32,15 +33,17 @@ if (isset($_SESSION['session_id'])) {
             </ul>
         </nav>
     </header>
-    
-    <main>
-        <section>
-            <!-- Mostra il messaggio di benvenuto -->
-            
-            <a href="catalogo.php">Visualizza il catalogo</a><br>
-            <a href="logout.php" id="logout">Logout</a>
-        </section>
-    </main>
 
+        <section>
+
+            <?php if ($session_user_id == 4): ?>
+                <!-- Se l'utente ha id = 4, mostra il link per visualizzare i punti vendita -->
+                <h2>Seleziona un'azione</h2>
+                <a href="puntovendita.php" class="btn">Visualizza i Punti Vendita</a> <br>
+            <?php else: ?>
+                <a href="catalogo.php">Visualizza il catalogo</a> <br>
+            <?php endif; ?>
+            <a href="logout.php" id="'logout">Logout</a>
+        </section>
 </body>
 </html>

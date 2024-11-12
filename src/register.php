@@ -48,6 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['register'])){
         }        
     }
 }
+// Include il codice html per la registrazione nuovo utente
 ?>
 
 <!DOCTYPE html>
@@ -71,24 +72,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['register'])){
 
     <!-- Form di registrazione -->
     <form method="post" action="register.php">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" maxlength="50" required><br><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-
+        
+        
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" maxlength="50" required><br><br>
-
+        
         <label for="surname">Cognome:</label>
         <input type="text" id="surname" name="surname" maxlength="50" required><br><br>
-
+        
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>
-
+        
         <label for="birthdate">Data di nascita:</label>
         <input type="date" id="birthdate" name="birthdate" required><br><br>
-
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" maxlength="50" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
         <button type="submit" name="register">Registrati</button>
     </form>
 

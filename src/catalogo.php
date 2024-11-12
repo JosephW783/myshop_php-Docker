@@ -23,8 +23,8 @@ if (isset($_SESSION['session_id'])) {
     echo "Per favore accedi prima di vedere gli articoli.";
     exit;
 }
+// Include il codice html per il catalogo
 ?>
-
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -88,8 +88,8 @@ if (isset($_SESSION['session_id'])) {
 
     <nav class="bottom-nav">
         <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="carrello.php">Carrello</a></li>
         </ul>
     </nav>
 </body>

@@ -92,77 +92,8 @@ if (isset($_POST['login'])) {
             $error= "Credenziali errate!";
             }
         }   
-    }   
-        
-    
-
-   
-    
-    
-/*
-    // Verifica se l'utente è loggato
-    if (isset($_SESSION['user'])) {
-    // Eseguo la query
-    $table = 'utente';
-    $stmt = $pdo->prepare("SELECT * FROM $table");
-    $stmt->execute();
-    
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-     // Controllo se ci sono risultati e li visualizzo in formato html
-     if ($results) {
-        echo "<h1>Dati estratti dalla tabella '$table'</h1>";
-        echo "<table border='1'>";
-        echo "<tr>";
-        
-        // Mostra le intestazioni delle colonne
-        foreach (array_keys($results[0]) as $column) {
-            echo "<th>" . htmlspecialchars($column) . "</th>";
-        }
-        echo "</tr>";
-
-        // Mostra i dati
-        foreach ($results as $row) {
-            echo "<tr>";
-            foreach ($row as $column => $data) {
-                if ($column == 'immagine') {
-                    $imageData = base64_encode(($data));
-                    echo "<td><img src='data:image/jpeg;base64,$imageData' alt='Immagine' style='width:200px;'/></td>";
-                } else {
-                    echo "<td>" . htmlspecialchars($data) . "</td>";
-                }
-            }
-            echo "</tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "Nessun dato trovato nella tabella '$table'.";
     } 
-}
-    else {
-        // Modulo di login
-        echo '<h2>LOGIN</h2>';
-        echo '<form method="POST" action="">';
-        echo '<label for="username">Username:</label>';
-        echo '<input type="text" name="username" required>';
-        echo '<br>';
-        echo '<label for="password">Password:</label>';
-        echo '<input type="password" name="password" required>';
-        echo '<br>';
-        echo '<input type="submit" name="LOGIN" value="Accedi">';
-        echo '</form>';
-    }
-
     
-
-    
-    
-    
-
-
-
-
-
 
     /*
     

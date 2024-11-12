@@ -3,7 +3,6 @@ html,body{
     height: 100%;
     margin: 0;
     padding: 0;
-   
     font-family: Arial, sans-serif;
     background-color: rgb(226, 226, 226);
 }
@@ -13,7 +12,6 @@ header{
   background-color: #333;
   color: white;
   padding: 20px ;
-  align-items: left;
   text-align: left;
 }
 header h1{
@@ -54,6 +52,37 @@ h2, h3 {
   color: #333;
 }
 
+
+/* Style dell'elenco punti vendita */
+.puntovendita-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color:#dcd9d9;
+}
+.puntovendita-table, .puntovendita-table th, .puntovendita-table td {
+  border: 1px solid #ddd;
+}
+.puntovendita-table th, .puntovendita-table td {
+  padding: 10px;
+  text-align: left;
+}
+.puntovendita-table th {
+  background-color: whitesmoke;
+  color: #333;
+}
+.puntovendita-table tr:nth-child(even) {
+  background-color: white;
+}
+.puntovendita-table:hover {
+  background-color: whitesmoke;
+}
+.puntovendita-table img {
+  max-width: 100px;
+  height: auto;
+}
+
+
 /* Style del catalogo */
 .catalogo-table {
   width: 100%;
@@ -62,7 +91,6 @@ h2, h3 {
   background-color: #fff;
 }
 .catalogo-table , .catalogo-table th, .catalogo-table td {
- 
   border: 1px solid #ddd;
 }
 .catalogo-table th, .catalogo-table td {
@@ -87,21 +115,21 @@ h2, h3 {
 /* Form Style */
 form {
     background-color: #fff;
-    padding: 10px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     max-width: 400px;
 }
-form input [type="text"],
-form input [type="password"],
-form input [type="email"],
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
 form button {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 16px;
 }
 form input[type="text"]:focus,
@@ -147,7 +175,7 @@ h2 {
 }
 .message.error{
   background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
+  border: 1px solid red;
   color: #721c24;
 }
 .message.success{
@@ -162,6 +190,12 @@ h2 {
   justify-content: center;
   align-items: center;
   height: 300px;
+}
+
+.puntovendita-container {
+  padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Catalog page */

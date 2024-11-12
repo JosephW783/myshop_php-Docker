@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
         exit;
     } else {
 
-        $query = " SELECT username, password FROM utente WHERE username = :username ";
+        $query = " SELECT idUtente, username, password FROM utente WHERE username = :username ";
         $check = $pdo->prepare($query);
         $check->bindParam(':username', $username, PDO::PARAM_STR);
         $check->execute();
@@ -28,13 +28,14 @@ if (isset($_POST['login'])) {
             session_regenerate_id();
             $_SESSION['session_id'] = session_id();
             $_SESSION['session_user'] = $user['username'];
+            $_SESSION['session_user_id'] = $user['idUtente'];
             
             header('Location: dashboard.php');
             exit;
         } 
     } 
 }
-// includo il codice htlm del login
+// include il codice htlm del login
 ?>
 <!DOCTYPE html>
 <html lang="it">
