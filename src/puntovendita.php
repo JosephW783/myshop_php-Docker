@@ -28,7 +28,7 @@ if(isset($_SESSION['session_id']) && $_SESSION['session_user_id'] == 4){
         <section>
             <h2>Elenco dei Punti Vendita</h2>
 
-            <table class="puntovendita-table">
+            <table class="catalogo-table">
                 <thead>
                     <tr>
                         <th>ID Punto Vendita</th>

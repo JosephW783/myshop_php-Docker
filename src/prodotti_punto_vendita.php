@@ -5,6 +5,7 @@ include 'dbConnection.php';
 // verifico se la sessione dell'utente è attiva
 if(isset($_SESSION['session_id']) && isset($_SESSION['session_user_id']) && $_SESSION['session_user_id'] == 4){
     $session_user_id = $_SESSION['session_user_id'];
+
 } else {
 echo " Non sei autorizzato per questa pagina";
 exit;
@@ -13,7 +14,7 @@ exit;
 // recupero l'ID del punto vendita
 if(isset($_GET['idPuntoVendita'])) {
     $PuntoVendita_idPuntoVendita = (int) $_GET['idPuntoVendita'];
-
+// Controllo contenuto del Get
 } else {
     echo " ID Punto Vendita non valido. Ecco cosa contiene $_GET:";
     echo'<pre>';

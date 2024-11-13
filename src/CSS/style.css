@@ -52,37 +52,6 @@ h2, h3 {
   color: #333;
 }
 
-
-/* Style dell'elenco punti vendita */
-.puntovendita-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color:#dcd9d9;
-}
-.puntovendita-table, .puntovendita-table th, .puntovendita-table td {
-  border: 1px solid #ddd;
-}
-.puntovendita-table th, .puntovendita-table td {
-  padding: 10px;
-  text-align: left;
-}
-.puntovendita-table th {
-  background-color: whitesmoke;
-  color: #333;
-}
-.puntovendita-table tr:nth-child(even) {
-  background-color: white;
-}
-.puntovendita-table:hover {
-  background-color: whitesmoke;
-}
-.puntovendita-table img {
-  max-width: 100px;
-  height: auto;
-}
-
-
 /* Style del catalogo */
 .catalogo-table {
   width: 100%;
@@ -192,18 +161,30 @@ h2 {
   height: 300px;
 }
 
-.puntovendita-container {
-  padding: 0;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 /* Catalog page */
 .catalogo-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
+/* Pulsanti Dashboard */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #187277; /* colore sfondo */
+  color: white; /* colore del testo */
+  text-align: center;
+  text-decoration: none; /* rimuove la sottolineatura */
+  border-radius: 5px; /* bordi arrotondati */
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* effetto passaggio mouse */
+  margin-bottom: 10px;
+}
+.btn:hover {
+  background-color: 0.3s ease;
+}
+
+
 /* Posiziona i pulsanti in basso a destra */
 .bottom-nav {
   position: fixed;
@@ -232,7 +213,7 @@ h2 {
   font-size: 16px;
   padding: 10px;
   border-radius: 3px;
-  background-color: #007bff; /* Colore del pulsante */
+  background-color: #187277; /* Colore del pulsante */
   transition: background-color 0.3s ease;
 }
 

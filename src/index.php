@@ -10,6 +10,11 @@ if (isset($_SESSION['session_id'])) {
 }
 
 
+
+
+
+
+
 /*
 $servername= 'mariadb';  // Must be the service name of the database in `docker-compose.yml`
 $dbhost= 'localhost';

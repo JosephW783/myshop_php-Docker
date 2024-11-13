@@ -41,9 +41,9 @@ if (isset($_SESSION['session_id'])) {
                 <h2>Seleziona un'azione</h2>
                 <a href="puntovendita.php" class="btn">Visualizza i Punti Vendita</a> <br>
             <?php else: ?>
-                <a href="catalogo.php">Visualizza il catalogo</a> <br>
+                <a href="catalogo.php" class="btn">Visualizza il catalogo</a> <br>
             <?php endif; ?>
-            <a href="logout.php" id="'logout">Logout</a>
+            <a href="logout.php" id="'logout" class="btn">Logout</a>
         </section>
 </body>
 </html>
