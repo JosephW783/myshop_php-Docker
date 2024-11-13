@@ -25,8 +25,8 @@ if (isset($_POST['login'])) {
             header('Location:login.php');
             exit;
         } else {
-            session_regenerate_id();
-            $_SESSION['session_id'] = session_id();
+            session_regenerate_id();  // will replace the current session id with a new one, and keep the current session information.
+            $_SESSION['session_id'] = session_id();  // restituisce l'id di sessione per la sessione corrente. Se id è specificato, sostituirà l'id di sessione corrente.
             $_SESSION['session_user'] = $user['username'];
             $_SESSION['session_user_id'] = $user['idUtente'];
             

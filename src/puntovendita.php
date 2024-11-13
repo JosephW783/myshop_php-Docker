@@ -33,11 +33,13 @@ if(isset($_SESSION['session_id']) && $_SESSION['session_user_id'] == 4){
                     <tr>
                         <th>ID Punto Vendita</th>
                         <th>Città</th>
+                        <th>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         try{
+
                             // Query per recuperare l'elenco dei punti vendita
                             $query = "SELECT idPuntoVendita, citta FROM puntovendita";
                             $check = $pdo->prepare($query);
@@ -51,13 +53,14 @@ if(isset($_SESSION['session_id']) && $_SESSION['session_user_id'] == 4){
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($punto_vendita['idPuntoVendita'], ENT_QUOTES, 'UTF-8') . "</td>";
                                     echo "<td>" . htmlspecialchars($punto_vendita['citta'], ENT_QUOTES, 'UTF-8') . "</td>";
+                                    echo "<td><a href='prodotti_punto_vendita.php?idPuntoVendita=" . $punto_vendita['idPuntoVendita'] . "'class='btn'>Visualizza Prodotti</a></td>";
                                     echo "</tr>";
                                 } 
                             }  else {
-                                echo "<tr><td colspan='2'> Nessun punto vendita trovato. </td></tr> ";
+                                echo "<tr><td colspan='3'> Nessun punto vendita trovato. </td></tr> ";
                             }
                         } catch (PDOException $e){
-                            echo "<tr><td colspan='2'>Errore durante il recupero dei punti vendita: " . $e->getMessage() . "</td></tr>"; 
+                            echo "<tr><td colspan='3'>Errore durante il recupero dei punti vendita: " . $e->getMessage() . "</td></tr>"; 
                         }
                     ?>
                 </tbody>
