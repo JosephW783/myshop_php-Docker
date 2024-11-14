@@ -47,7 +47,7 @@ if (isset($_POST['login'])) {
     <title>Login</title>
 </head>
 <body>
-    <h2>Benvenuto in Myshop eCommerce, effettua il Login per accedere al catalogo!</h2>
+    <h2>Benvenuto in Myshop eCommerce, effettua il Login o Registrati per accedere al catalogo!</h2>
 
     <!-- Mostra il messaggio di errore, se presente -->
     <?php

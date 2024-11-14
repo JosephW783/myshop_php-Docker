@@ -131,7 +131,7 @@ h1 {
   font-size: 2rem;
 }
 h2 {
-  text-align: center;
+  text-align: left;
   margin: 20px;
 }
 
@@ -180,6 +180,7 @@ h2 {
   border-radius: 5px; /* bordi arrotondati */
   font-size: 16px;
   transition: background-color 0.3s ease; /* effetto passaggio mouse */
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 .btn:hover {
@@ -207,8 +208,8 @@ h2 {
   bottom: 20px;
   right: 20px;
   background-color: rgba(0, 0, 0, 0.7); /* Sfondo semi-trasparente */
-  padding: 10px;
-  border-radius: 5px;
+  padding: 20px;
+  border-radius: 10px;
 }
 .bottom-nav ul {
   list-style: none;

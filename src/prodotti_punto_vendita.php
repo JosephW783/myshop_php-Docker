@@ -92,7 +92,8 @@ try{
                                     ?>
                                 </td>
 
-                                <td><?php echo htmlspecialchars($prodotto['descrizione'], ENT_QUOTES, 'UTF-8'); ?></td>                            </tr>
+                                <td><?php echo htmlspecialchars($prodotto['descrizione'], ENT_QUOTES, 'UTF-8'); ?></td>                           
+                             </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
