@@ -12,6 +12,7 @@ if (isset($_SESSION['session_id'])) {
     // Mostra un messaggio di benvenuto
      echo "<h1>Benvenuto $session_user!</h1>";
 }
+
 // Include il codice HTML della dashboard
 ?>
 <!DOCTYPE html>
@@ -25,7 +26,7 @@ if (isset($_SESSION['session_id'])) {
 <body>
 
     <header>
-        <h1>Benvenuto nella Dashboard</h1>
+        <h1>Dashboard Myshop</h1>
         <nav>
             <ul>
                 <!-- Puoi aggiungere link al catalogo o altre sezioni del sito -->

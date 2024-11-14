@@ -42,6 +42,8 @@ try{
     echo "Errore durante il recupero dei prodotti: " . $e->getMessage();
     exit;
 }
+
+// include il codice html dei prodotti presenti per ogni punto vendita
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -90,8 +92,7 @@ try{
                                     ?>
                                 </td>
 
-                                <td><?php echo htmlspecialchars($prodotto['descrizione'], ENT_QUOTES, 'UTF-8'); ?></td>
-                            </tr>
+                                <td><?php echo htmlspecialchars($prodotto['descrizione'], ENT_QUOTES, 'UTF-8'); ?></td>                            </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>

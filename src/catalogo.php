@@ -23,6 +23,7 @@ if (isset($_SESSION['session_id'])) {
     echo "Per favore accedi prima di vedere gli articoli.";
     exit;
 }
+
 // Include il codice html per il catalogo
 ?>
 <!DOCTYPE html>
@@ -50,6 +51,7 @@ if (isset($_SESSION['session_id'])) {
                         <th>Categoria</th>
                         <th>Immagine</th>
                         <th>Descrizione</th>
+                        <th>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,6 +76,17 @@ if (isset($_SESSION['session_id'])) {
                                       ?>
                             </td>
                             <td><?php echo htmlspecialchars($articolo['descrizione'], ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td>
+                                <!-- Pulsante aggiungi al carrello -->
+                                <form action="carrello.php" method="POST">
+                                    <input type="hidden" name="idArticolo" value="<?php echo $articolo['idArticolo']; ?>">
+                                    <input type="hidden" name="nome" value="<?php echo htmlspecialchars( $articolo['nome'], ENT_QUOTES, 'UTF-8');?>">
+                                    <input type="hidden" name="prezzo" value="<?php echo htmlspecialchars( $articolo['prezzo'], ENT_QUOTES, 'UTF-8');?>">
+                                    <input type="hidden" name="quantita" value="1"> <!-- quantita predefinita -->
+                                    <button type="submit" class="btn-aggiungi">Aggiungi al Carrello</button>
+                                </form>
+                            </td>
+
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

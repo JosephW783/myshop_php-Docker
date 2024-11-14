@@ -1,10 +1,10 @@
 /* Global style*/
 html,body{
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: rgb(226, 226, 226);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(226, 226, 226);
 }
 
 /* Imposto lo stile dell'Header */
@@ -15,21 +15,21 @@ header{
   text-align: left;
 }
 header h1{
-    margin: 0 auto;
-    text-align: center;
-    align-items: center;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
 }
 nav ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-    text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  text-align: center;
 }
 nav ul li{
-    color:white;
-    text-decoration: none;
-    font-weight: bold;
+  color:white;
+  text-decoration: none;
+  font-weight: bold;
 }
 nav ul li a{
   color:white;
@@ -40,7 +40,7 @@ nav ul li a:hover {
   color: #ababab;
 }
 
-/* Main  */
+/* Main */
 main {
   padding: 20px;
   max-width: 1200px;
@@ -83,12 +83,12 @@ h2, h3 {
 
 /* Form Style */
 form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    max-width: 400px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 400px;
 }
 form input[type="text"],
 form input[type="password"],
@@ -104,17 +104,17 @@ form button {
 form input[type="text"]:focus,
 form input[type="password"]:focus,
 form input[type="email"]:focus {
-    outline: none;
-    border-color: #5cb85c;
+  outline: none;
+  border-color: #5cb85c;
 }
 form button {
-  background-color: #187227;
+  background-color: #187277;
   color: wheat;
   border: none;
   cursor: pointer;
 }
 form button:hover {
-  background-color: #4cae4c;
+  background-color: darkslategray;
 }
 
 /* Login page */
@@ -134,6 +134,7 @@ h2 {
   text-align: center;
   margin: 20px;
 }
+
 /* Message form */
 .message{
   padding: 10px;
@@ -167,6 +168,7 @@ h2 {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 /* Pulsanti Dashboard */
 .btn {
   display: inline-block;
@@ -181,7 +183,21 @@ h2 {
   margin-bottom: 10px;
 }
 .btn:hover {
-  background-color: 0.3s ease;
+  background-color: #0056b3;
+}
+/* pulsanti del carrello */
+.btn-checkout, .btn-continua {
+  background-color: #187277 ;
+  color:white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  margin-top: 20px;
+}
+.btn-checkout:hover, .btn-continua:hover {
+  background-color: #0056b3;
 }
 
 
@@ -194,7 +210,6 @@ h2 {
   padding: 10px;
   border-radius: 5px;
 }
-
 .bottom-nav ul {
   list-style: none;
   margin: 0;
@@ -202,11 +217,9 @@ h2 {
   display: flex;
   gap: 20px;
 }
-
 .bottom-nav li {
   display: inline;
 }
-
 .bottom-nav a {
   color: white;
   text-decoration: none;
@@ -216,9 +229,8 @@ h2 {
   background-color: #187277; /* Colore del pulsante */
   transition: background-color 0.3s ease;
 }
-
 .bottom-nav a:hover {
-  background-color: #ff0000; /* Colore al passaggio del mouse */
+  background-color: #0056b3; /* Colore al passaggio del mouse */
 }
 
 /* Footer */

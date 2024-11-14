@@ -11,6 +11,7 @@ if(isset($_SESSION['session_id']) && $_SESSION['session_user_id'] == 4){
     echo " Non sei autorizzato per questa pagina! ";
     exit;
 }
+
 // Include il codice html per l'elenco dei punti vendita
 ?>
 <!DOCTYPE html>
