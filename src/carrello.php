@@ -44,7 +44,7 @@ if (isset($_SESSION['carrello'] [$idArticolo])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrello</title>
-    <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiungi il tuo CSS per lo stile -->
+    <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiunge il file CSS per lo stile -->
 </head>
 <body>
 

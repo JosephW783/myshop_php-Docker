@@ -41,6 +41,7 @@ if (isset($_SESSION['session_id'])) {
                 <!-- Se l'utente ha id = 4, mostra il link per visualizzare i punti vendita -->
                 <h2>Seleziona un'azione</h2>
                 <a href="puntovendita.php" class="btn">Visualizza i Punti Vendita</a> <br>
+                <a href="utenti.php" class="btn">Visualizza gli Utenti Registrati </a> <br>
             <?php else: ?>
                 <a href="catalogo.php" class="btn">Visualizza il catalogo</a> <br>
             <?php endif; ?>

@@ -1,30 +1,31 @@
 <?php
-session_start();
+// Questo file gestisce il processo di login di un utente
+session_start(); // session_start avvia una sessione PHP, che consente di memorizzare e gestire informazioni tra diverse richieste dell'utente.
 include 'dbConnection.php';
 
-
+// verifica della presenza dei dati nel login
 if (isset($_POST['login'])) {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
-    
+ 
+    // controllo della validità dei dati
     if (empty($username) || empty($password)) {
         $_SESSION['login_msg'] = 'Inserisci username e password!';
         header('Location: login.php');
         exit;
-    } else {
-
+    } else { // verifica le credenziali dell'utente del database
         $query = " SELECT idUtente, username, password FROM utente WHERE username = :username ";
         $check = $pdo->prepare($query);
         $check->bindParam(':username', $username, PDO::PARAM_STR);
         $check->execute();
         
         $user = $check->fetch(PDO::FETCH_ASSOC);
-        
+        // verifica della password
         if (!$user || password_verify($password, $user['password']) === false) {
             $_SESSION['login_msg'] = 'Credenziali utente errate';
-            header('Location:login.php');
+            header('Location: login.php');
             exit;
-        } else {
+        } else { // Avvio della sessione utente e reindirizzamento alla Dashboard
             session_regenerate_id();  // will replace the current session id with a new one, and keep the current session information.
             $_SESSION['session_id'] = session_id();  // restituisce l'id di sessione per la sessione corrente. Se id è specificato, sostituirà l'id di sessione corrente.
             $_SESSION['session_user'] = $user['username'];
