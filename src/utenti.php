@@ -3,11 +3,12 @@ session_start();
 include 'dbConnection.php';
 
 // verifico se la sessione è attiva e l'utente ha l'id=4
-if(isset($_SESSION['session_user_id'])){
+if(isset($_SESSION['session_id']) && $_SESSION['session_user_id'] == 4){
     $session_user_id = $_SESSION['session_user_id'];
 } else{ 
     // se l'utente non ha l'id=4 visualizza il seguente avviso:
     echo "Non sei autorizzato per questa pagina";
+    exit;
 }
 
 // Query per recuperare gli utenti registrati dal database
@@ -18,6 +19,7 @@ try {
 
     // recupera gli utenti come array associativo
     $utenti = $check->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     echo "Errore durante il recupero degli utenti registrati: " . $e->getMessage();
     exit;
