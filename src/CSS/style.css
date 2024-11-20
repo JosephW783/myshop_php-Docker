@@ -65,10 +65,12 @@ h2, h3 {
 .catalogo-table th, .catalogo-table td {
   padding: 10px;
   text-align: left;
+  vertical-align: middle;
 }
 .catalogo-table th {
   background-color: #f2f2f2;
   color: #333;
+  text-align: center;
 }
 .catalogo-table tr:nth-child(even) {
   background-color: #f9f9f9;
@@ -80,6 +82,80 @@ h2, h3 {
   max-width: 100px;
   height: auto;
 }
+.catalogo-table form {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+/* Pulsante "Rimuovi" dentro la tabella */
+.catalogo-table form button {
+  background-color: #187277;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+  box-shadow: none;
+  transition: none;
+}
+.catalogo-table form button:hover {
+  background-color: #721c24;
+  color: white;
+}
+/* Pulsante "modifica quantità" dentro la tabella (simile al pulsante Rimuovi) */
+.catalogo-table .btn-operazioni {
+  background-color: #5cb85c; /* Colore di sfondo del pulsante */
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+  box-shadow: none; /* Rimuove l'ombra */
+  transition: none; /* Disabilita la transizione */
+}
+/* Hover - Cambia colore di sfondo al passaggio del mouse */
+.catalogo-table .btn-operazioni:hover {
+  background-color: #31b0d5; /* Colore più scuro al passaggio del mouse */
+  color: white;
+}
+
+
+/* campo di input della quantita */
+.catalogo-table input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+.catalogo-table input[type="number"]:focus {
+  outline: none;
+  border-color: #5cb85c;
+}
+/* pulsante aggiornamente integrato nella tabella 
+.catalogo-table .btn-update {
+  background-color: #5cb85c;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.catalogo-table .btn-update:hover {
+  background-color: #31b0d5;
+}
+*/
 
 /* Form Style */
 form {
@@ -201,22 +277,23 @@ h2 {
   background-color: #0056b3;
 }
 
-
 /* Posiziona i pulsanti in basso a destra */
 .bottom-nav {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10px;
+  right: 10px;
   background-color: rgba(0, 0, 0, 0.7); /* Sfondo semi-trasparente */
-  padding: 15px;
+  padding: 8px 12px;
   border-radius: 10px;
+  width: auto;
+  box-sizing: border-box; /* affinchè il padding non influenzi la larghezza totale */
 }
 .bottom-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 .bottom-nav li {
   display: inline;
@@ -224,8 +301,8 @@ h2 {
 .bottom-nav a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
-  padding: 10px;
+  font-size: 14px;
+  padding: 8px 12px;
   border-radius: 3px;
   background-color: #187277; /* Colore del pulsante */
   transition: background-color 0.3s ease;

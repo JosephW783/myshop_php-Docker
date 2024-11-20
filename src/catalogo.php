@@ -7,6 +7,13 @@ include 'image.php';
 if (isset($_SESSION['session_id'])) {
     $session_user = htmlspecialchars($_SESSION['session_user'], ENT_QUOTES, 'UTF-8');
     $session_id = htmlspecialchars($_SESSION['session_id']);
+    $session_user_id = $_SESSION['session_user_id'];
+
+    // se l'utente è un amministratore, non può visualizzqre il catalogo
+    if($session_user_id == 4) {
+        echo "Non sei autorizzato per questa pagina";
+        exit;
+    }
 
     try {
         // query per ottenere tutti gli articoli
@@ -51,7 +58,7 @@ if (isset($_SESSION['session_id'])) {
                         <th>Categoria</th>
                         <th>Immagine</th>
                         <th>Descrizione</th>
-                        <th>Azioni</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
