@@ -1,13 +1,14 @@
 <?php
-session_start();
 include 'dbConnection.php';
+include 'function.php';
+session_start();
 
-// verifico se la sessione è attiva e l'utente ha l'id=4
-if(isset($_SESSION['session_id']) && $_SESSION['session_user_id'] == 4){
-    $session_user_id = $_SESSION['session_user_id'];
-} else{ 
-    // se l'utente non ha l'id=4 visualizza il seguente avviso:
-    echo "Non sei autorizzato per questa pagina";
+if(!is_autenticated()){
+    header('Location: login.php');
+    exit;
+}
+if(!has_permission()){
+    header ('Location: login.php');
     exit;
 }
 
@@ -24,15 +25,16 @@ try {
     echo "Errore durante il recupero degli utenti registrati: " . $e->getMessage();
     exit;
 }
-// Codice html per l'elenco degli utenti
+
 ?>
 
+<!-- Codice html per l'elenco degli utenti -->
 <!DOCTYPE html>
 <html lang="it">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catalogo</title>
+        <title>Utenti</title>
         <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiungi il tuo CSS per lo stile -->
     </head>
     <body>
@@ -48,7 +50,6 @@ try {
                     <tr>
                         <th>iD Utente</th>
                         <th>Username</th>
-                        <th>Password</th>
                         <th>Name</th>
                         <th>Surname</th>
                         <th>Email</th>
@@ -61,7 +62,6 @@ try {
                             <tr>
                                 <td><?php echo htmlspecialchars($utente['idUtente'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?php echo htmlspecialchars($utente['username'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($utente['password'], ENT_QUOTES, 'UTF-8'); ?> </td>
                                 <td><?php echo htmlspecialchars($utente['name'], ENT_QUOTES, 'UTF-8'); ?> </td>
                                 <td><?php echo htmlspecialchars($utente['surname'], ENT_QUOTES, 'UTF-8'); ?> </td>
                                 <td><?php echo htmlspecialchars($utente['email'], ENT_QUOTES, 'UTF-8'); ?> </td>

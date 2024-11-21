@@ -1,25 +1,26 @@
 <?php
-session_start();
 include 'dbConnection.php';
+include 'function.php';
+session_start();
 
-// verifico se la sessione è attiva e se l'utente ha l'id = 4, in caso positivo procede con il caricamento dei punti vendita
-if(isset($_SESSION['session_id']) && $_SESSION['session_user_id'] == 4){
-    $session_user_id = $_SESSION['session_user_id'];
-    
-} else {
-    // se l'utente non ha l'id=4 visualizzo il seguente avviso
-    echo " Non sei autorizzato per questa pagina! ";
+
+if(!is_autenticated()){
+    header ('Location: login.php');
     exit;
 }
-
-// Include il codice html per l'elenco dei punti vendita
+if(!has_permission()){
+    header('Location: login.php');
+    exit;
+}
 ?>
+
+<!-- codice html per l'elenco dei punti vendita -->
 <!DOCTYPE html>
 <html lang="it">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catalogo Punti Vendita</title>
+        <title>Punti Vendita</title>
         <link rel="stylesheet" href="/CSS/style.css">
     </head>
     <body>

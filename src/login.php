@@ -1,6 +1,5 @@
 <?php
-// Questo file gestisce il processo di login di un utente
-session_start(); // session_start avvia una sessione PHP, che consente di memorizzare e gestire informazioni tra diverse richieste dell'utente.
+session_start(); // session_start: avvia una sessione PHP, che consente di memorizzare e gestire informazioni tra diverse richieste dell'utente.
 include 'dbConnection.php';
 
 // verifica della presenza dei dati nel login
@@ -37,8 +36,10 @@ if (isset($_POST['login'])) {
     } 
 }
 
-// include il codice htlm del login
+
 ?>
+
+<!-- codice html per il login -->
 <!DOCTYPE html>
 <html lang="it">
 <head>

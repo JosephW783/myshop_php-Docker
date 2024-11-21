@@ -1,20 +1,23 @@
 <?php
-session_start(); // Avvia la sessione
+include 'function.php';
 include 'dbConnection.php';
+session_start(); 
 
-// Verifica se la sessione è attiva
-if (isset($_SESSION['session_id'])) {
-    // Recupera i dati della sessione
-    $session_user = htmlspecialchars($_SESSION['session_user'], ENT_QUOTES, 'UTF-8');
-    $session_id = htmlspecialchars($_SESSION['session_id']);
-    $session_user_id = $_SESSION['session_user_id'];
-    
-    // Mostra un messaggio di benvenuto
-     echo "<h1>Benvenuto $session_user!</h1>";
+// Verifica se l'utente ha chiesto di fare il logout
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    destroy_session();  
 }
 
-// Include il codice HTML della dashboard
+if(!is_autenticated()){
+    header ('Location: login.php');
+    exit;
+}
+// Recupero i dati dell'utente della sessione
+$session_user = get_session_user(); // nome utente
+$session_user_id = get_session_user_id(); // id utente
 ?>
+
+<!-- codice HTML della dashboard -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -26,26 +29,20 @@ if (isset($_SESSION['session_id'])) {
 <body>
 
     <header>
-        <h1>Dashboard Myshop</h1>
-        <nav>
-            <ul>
-                <!-- Puoi aggiungere link al catalogo o altre sezioni del sito -->
-                <!-- <li><a href="catalogo.php">Catalogo</a></li> -->
-            </ul>
-        </nav>
+        <h1>Dashboard Myshop eCommerce</h1>
     </header>
 
         <section>
-
-            <?php if ($session_user_id == 4): ?>
-                <!-- Se l'utente ha id = 4, mostra il link per visualizzare i punti vendita -->
-                <h2>Seleziona un'azione</h2>
-                <a href="puntovendita.php" class="btn">Visualizza i Punti Vendita</a> <br>
-                <a href="utenti.php" class="btn">Visualizza gli Utenti Registrati </a> <br>
+            <h2>Benvenuto <?php echo htmlspecialchars($session_user, ENT_QUOTES, 'UTF-8'); ?>, seleziona un'azione:</h2>
+            <!-- Se l'utente ha id = 4, mostra il link per visualizzare i punti vendita -->
+            <?php if (has_permission()): ?>
+                <a href="puntovendita.php" class="btn">Visualizza i punti vendita</a> <br>
+                <a href="utenti.php" class="btn">Visualizza gli utenti registrati </a> <br>
             <?php else: ?>
                 <a href="catalogo.php" class="btn">Visualizza il catalogo</a> <br>
             <?php endif; ?>
-            <a href="logout.php" id="'logout" class="btn">Logout</a>
+            <a href="javascript:void(0);" onclick="window.location.href='?logout=true'" class="btn">Logout</a>
         </section>
+
 </body>
 </html>

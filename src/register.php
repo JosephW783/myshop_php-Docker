@@ -49,8 +49,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['register'])){
     }
 }
 
-// Include il codice html per la registrazione nuovo utente
 ?>
+
+<!-- codice html per la registrazione nuovo utente -->
 <!DOCTYPE html>
 <html>
 <head>

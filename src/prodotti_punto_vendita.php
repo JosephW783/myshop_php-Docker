@@ -1,26 +1,17 @@
 <?php
-session_start();
 include 'dbConnection.php';
+include 'function.php';
+session_start();
 
-// verifico se la sessione dell'utente è attiva
-if(isset($_SESSION['session_id']) && isset($_SESSION['session_user_id']) && $_SESSION['session_user_id'] == 4){
-    $session_user_id = $_SESSION['session_user_id'];
-
-} else {
-echo " Non sei autorizzato per questa pagina";
-exit;
+if(!is_autenticated()){
+    header('Location: login.php');
+    exit;
 }
 
 // recupero l'ID del punto vendita
 if(isset($_GET['idPuntoVendita'])) {
     $PuntoVendita_idPuntoVendita = (int) $_GET['idPuntoVendita'];
 // Controllo contenuto del Get
-} else {
-    echo " ID Punto Vendita non valido. Ecco cosa contiene $_GET:";
-    echo'<pre>';
-    print_r($_GET);
-    echo'</pre>';
-    exit;
 }
 
 // Query per recuperare i prodotti per il punto vendita specifico
@@ -43,14 +34,16 @@ try{
     exit;
 }
 
-// include il codice html dei prodotti presenti per ogni punto vendita
+
 ?>
+
+<!-- codice html dei prodotti presenti per ogni punto vendita -->
 <!DOCTYPE html>
 <html lang="it">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catalogo</title>
+        <title>Catalogo Punto Vendita</title>
         <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiungi il tuo CSS per lo stile -->
     </head>
     <body>

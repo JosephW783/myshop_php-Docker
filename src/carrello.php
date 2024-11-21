@@ -1,6 +1,12 @@
 <?php
+include 'function.php';
 session_start();
 
+// verifica se l'utente è autenticato
+if(!is_autenticated()){
+    header('Location: login.php');
+    exit;
+}
 // Verifica se è stata inviata una richiesta per rimuovere un articolo
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idArticolo']) && isset($_POST['action']) && $_POST['action'] === 'remove') {
     $idArticolo = $_POST['idArticolo'];
@@ -59,9 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idArticolo'], $_POST[
 // Mostra il contenuto del carrello se è presente
 $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
 
-// codice html per il carrello
+
 ?>
 
+<!-- codice html per il carrello -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
