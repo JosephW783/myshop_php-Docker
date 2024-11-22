@@ -3,14 +3,14 @@ html,body{
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: rgb(226, 226, 226);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(225, 225, 225);
 }
 
-/* Imposto lo stile dell'Header */
+/* Imposto lo stile dell'Header dashboard */
 header{
-  background-color: #333;
-  color: white;
+  background-color: #187277;
+  color: wheat;
   padding: 20px ;
   text-align: left;
 }
@@ -27,12 +27,12 @@ nav ul{
   text-align: center;
 }
 nav ul li{
-  color:white;
+  color:black;
   text-decoration: none;
   font-weight: bold;
 }
 nav ul li a{
-  color:white;
+  color:black;
   text-decoration: none;
   font-weight: bold;
 }
@@ -42,14 +42,14 @@ nav ul li a:hover {
 
 /* Main */
 main {
-  padding: 20px;
+  padding: 10px;
   max-width: 1200px;
   margin: auto;
   align-items: center;
 
 }
 h2, h3 {
-  color: #333;
+  color: black;
 }
 
 /* Style del catalogo */
@@ -65,6 +65,7 @@ h2, h3 {
 .catalogo-table th, .catalogo-table td {
   padding: 10px;
   text-align: left;
+  font-size: 1em;
   vertical-align: middle;
 }
 .catalogo-table th {
@@ -145,11 +146,11 @@ h2, h3 {
 /* Form Style */
 form {
   background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
+  padding: 50px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 500px;
 }
 form input[type="text"],
 form input[type="password"],
@@ -159,7 +160,7 @@ form button {
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
 }
 form input[type="text"]:focus,
@@ -241,7 +242,7 @@ h2 {
   border-radius: 10px; /* bordi arrotondati */
   font-size: 18px;
   transition: background-color 0.3s ease; /* effetto passaggio mouse */
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 0;
@@ -289,7 +290,7 @@ h2 {
   text-decoration: none;
   font-size: 16px;
   padding: 20px 30px;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: #187277; /* Colore del pulsante */
   transition: background-color 0.3s ease;
 }

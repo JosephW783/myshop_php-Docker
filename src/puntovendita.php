@@ -6,10 +6,12 @@ session_start();
 
 if(!is_autenticated()){
     header ('Location: login.php');
+    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
     exit;
 }
 if(!has_permission()){
     header('Location: login.php');
+    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
     exit;
 }
 ?>
@@ -55,7 +57,7 @@ if(!has_permission()){
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($punto_vendita['idPuntoVendita'], ENT_QUOTES, 'UTF-8') . "</td>";
                                     echo "<td>" . htmlspecialchars($punto_vendita['citta'], ENT_QUOTES, 'UTF-8') . "</td>";
-                                    echo "<td><a href='prodotti_punto_vendita.php?idPuntoVendita=" . $punto_vendita['idPuntoVendita'] . "'class='btn'>Visualizza Prodotti</a></td>";
+                                    echo "<td><a href='prodotti_punto_vendita.php?idPuntoVendita=" . $punto_vendita['idPuntoVendita'] . "'class='btn'>Visualizza i Prodotti</a></td>";
                                     echo "</tr>";
                                 } 
                             }  else {

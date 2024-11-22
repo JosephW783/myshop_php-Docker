@@ -48,7 +48,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['register'])){
         }        
     }
 }
-
 ?>
 
 <!-- codice html per la registrazione nuovo utente -->

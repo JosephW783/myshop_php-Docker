@@ -1,13 +1,23 @@
 <?php
-session_start();  
 include 'dbConnection.php'; 
 include 'image.php';
 include 'function.php';
+session_start();  
 
 if(!is_autenticated()){
     header('Location: login.php');
+    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
+
     exit;
 }
+if(has_permission()){
+    header('Location: login.php');
+    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
+
+    exit;
+}
+
+
 
     try {
         // query per ottenere tutti gli articoli

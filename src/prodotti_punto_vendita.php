@@ -3,15 +3,16 @@ include 'dbConnection.php';
 include 'function.php';
 session_start();
 
-if(!is_autenticated()){
+if(!has_permission()){
     header('Location: login.php');
+    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
     exit;
 }
 
 // recupero l'ID del punto vendita
 if(isset($_GET['idPuntoVendita'])) {
+        // Controllo contenuto del Get
     $PuntoVendita_idPuntoVendita = (int) $_GET['idPuntoVendita'];
-// Controllo contenuto del Get
 }
 
 // Query per recuperare i prodotti per il punto vendita specifico
@@ -33,8 +34,6 @@ try{
     echo "Errore durante il recupero dei prodotti: " . $e->getMessage();
     exit;
 }
-
-
 ?>
 
 <!-- codice html dei prodotti presenti per ogni punto vendita -->

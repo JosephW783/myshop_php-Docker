@@ -35,8 +35,6 @@ if (isset($_POST['login'])) {
         } 
     } 
 }
-
-
 ?>
 
 <!-- codice html per il login -->
@@ -50,6 +48,11 @@ if (isset($_POST['login'])) {
 </head>
 <body>
     <h2>Benvenuto in Myshop eCommerce, effettua il Login o Registrati per accedere al catalogo!</h2>
+    <?php if (!empty ($_SESSION['fail_message'])){
+        echo $_SESSION['fail_message'];
+        unset($_SESSION['fail_message']);
+    } 
+    ?>
 
     <!-- Mostra il messaggio di errore, se presente -->
     <?php

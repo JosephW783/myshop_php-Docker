@@ -4,16 +4,18 @@
 function start_session(){
     if(session_status() == PHP_SESSION_NONE){
         session_start();
+        
     }
     if(session_status() == PHP_SESSION_ACTIVE){
         session_regenerate_id();
     }
 }
 
-// Verifica se l'utente è autenticato ed ha i permessi 
+// Verifica se l'utente è autenticato e che abbia i permessi 
 function is_autenticated(){
     return isset($_SESSION['session_id']);
 }
+
 function has_permission(){
     return isset($_SESSION['session_user_id']) && $_SESSION['session_user_id'] == 4;
 }

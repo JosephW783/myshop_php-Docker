@@ -1,7 +1,7 @@
 <?php
-include 'function.php';
 include 'dbConnection.php';
-session_start(); 
+include 'function.php';
+session_start();
 
 // Verifica se l'utente ha chiesto di fare il logout
 if (isset($_GET['logout']) && $_GET['logout'] == 'true') {

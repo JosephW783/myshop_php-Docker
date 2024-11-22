@@ -5,6 +5,14 @@ session_start();
 // verifica se l'utente è autenticato
 if(!is_autenticated()){
     header('Location: login.php');
+    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
+
+    exit;
+}
+if(has_permission()){
+    header('Location: login.php');
+    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
+
     exit;
 }
 // Verifica se è stata inviata una richiesta per rimuovere un articolo
@@ -61,10 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idArticolo'], $_POST[
     header("Location: carrello.php");
     exit;
 }
-
 // Mostra il contenuto del carrello se è presente
 $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
-
 
 ?>
 
@@ -127,7 +133,7 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
                             <form action="carrello.php" method="post" style="display:inline;">
                                 <input type="hidden" name="idArticolo" value="<?php echo $idArticolo; ?>">
                                 <input type="hidden" name="action" value="remove">
-                                <button type="submit" onclick="return confirm">Rimuovi</button>
+                                <button type="submit" onclick="return confirm">Rimuovi articolo</button>
                             </form>
                         </td>
                     </tr>
