@@ -7,7 +7,7 @@ html,body{
   background-color: rgb(225, 225, 225);
 }
 
-/* Imposto lo stile dell'Header dashboard */
+/* Stile dell'Header dashboard */
 header{
   background-color: #187277;
   color: wheat;
@@ -245,7 +245,7 @@ h2 {
   margin-top: 20px;
   margin-bottom: 10px;
   margin-left: 20px;
-  margin-right: 0;
+  margin-right: 10px;
 }
 .btn:hover {
   background-color: #0056b3;

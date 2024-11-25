@@ -64,8 +64,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idArticolo'], $_POST[
             'quantita' => $quantita
         ];
     }
+    // Aggiungi gli articoli nel carrello all'ordine se l'utente ha cliccato sul link "Conferma Ordine"
+    if (isset($_POST['conferma_ordine'])) {
+        var_dump($_POST);
+        $_SESSION['ordine'] = $_SESSION['carrello'];  // Copia gli articoli nell'ordine
+        unset($_SESSION['carrello']);
+        header("Location: ordine.php"); // Ricarica la pagina dell'ordine
+        exit;
+    }
 
-    // Dopo aver aggiunto l'articolo, puoi rimanere sulla stessa pagina o fare il redirect
+
+    //Dopo aver aggiunto l'articolo, puoi rimanere sulla stessa pagina o fare il redirect
     header("Location: carrello.php");
     exit;
 }
@@ -81,7 +90,7 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrello</title>
-    <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiungi il file CSS per lo stile -->
+    <link rel="stylesheet" href="/CSS/style.css"> 
 </head>
 <body>
 
@@ -89,7 +98,7 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
     <h1>Carrello</h1>
 </header>
 
-<main>
+<table>
     <?php if (!empty($carrello)): ?>
         <h2>Il tuo carrello</h2>
         <table class="catalogo-table">
@@ -110,7 +119,7 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
                     $nome = isset($articolo['nome']) ? htmlspecialchars($articolo['nome'], ENT_QUOTES, 'UTF-8') : 'Nome non disponibile';
                     $prezzo = isset($articolo['prezzo']) ? $articolo['prezzo'] : 0;
                     $quantita = isset($articolo['quantita']) ? $articolo['quantita'] : 0;
-
+                    
                     // Calcola il totale per questo articolo
                     $totaleArticolo = $prezzo * $quantita;
                     $totale += $totaleArticolo;
@@ -121,7 +130,7 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
                         <td><?php echo $quantita; ?></td>
                         <td><?php echo number_format($totaleArticolo, 2, ',', '.') . ' €'; ?></td>
                         <td>
-                            <!-- Campo di input per modificare la quantità -->
+                            <!-- Campo per modificare la quantità -->
                             <form action="carrello.php" method="post" style="display: inline;">
                                 <input type="hidden" name="idArticolo" value="<?php echo $idArticolo; ?>">
                                 <input type="number" name="quantita" value="<?php echo $quantita; ?>" min="1" onchange="this.form.submit();">
@@ -145,9 +154,12 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
             </tbody>
         </table>
 
-        <div class="actions">
-            <a href="Acquisto.php" class="btn-checkout">Acquista</a> <br>
-        </div>
+        
+            <form action="carrello.php" method="post">
+                <input type="hidden" name="conferma_ordine" value="1">
+                <button type="submit" class="btn-checkout">Conferma ordine</button>
+            </form>
+        </table>
 
     <?php else: ?>
         <p>Il tuo carrello è vuoto. <a href="catalogo.php">Vai al catalogo</a> per aggiungere articoli.</p>
