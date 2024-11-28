@@ -4,16 +4,12 @@ include 'function.php';
 session_start();
 
 
-if(!is_autenticated()){
+if(!is_autenticated() || !has_permission()){
     header ('Location: login.php');
     $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
     exit;
 }
-if(!has_permission()){
-    header('Location: login.php');
-    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
-    exit;
-}
+
 ?>
 
 <!-- codice html per l'elenco dei punti vendita -->

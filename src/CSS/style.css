@@ -63,7 +63,7 @@ h2, h3 {
   border: 1px solid #ddd;
 }
 .catalogo-table th, .catalogo-table td {
-  padding: 10px;
+  padding: 25px;
   text-align: left;
   font-size: 1em;
   vertical-align: middle;
@@ -92,8 +92,8 @@ h2, h3 {
 .catalogo-table form button {
   background-color: #187277;
   color: white;
-  padding: 5px 10px;
-  font-size: 14px;
+  padding: 10px 15px;
+  font-size: 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -193,8 +193,60 @@ h1 {
   font-size: 2rem;
 }
 h2 {
-  text-align: left;
+  text-align: center;
   margin: 20px;
+}
+/* From per aggiungere un nuovo articolo */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+input, textarea {
+  width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+input[type="file"] {
+    padding: 5px;
+}
+
+button.submit-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.submit-btn:hover {
+    background-color: #45a049;
 }
 
 /* Message form */
@@ -234,7 +286,10 @@ h2 {
 /* Pulsanti Dashboard */
 .btn {
   display: inline-flex;
-  padding: 20px 30px;
+  align-items: center; /* Allinea verticalmente il contenuto */
+  justify-content: center; /* Centra orizzontalmente il testo */
+  width: 400px; /* Imposta una larghezza fissa */
+  height: 55px; /* Imposta un'altezza fissa */
   background-color: #187277; /* colore sfondo */
   color: white; /* colore del testo */
   text-align: center;
@@ -250,6 +305,7 @@ h2 {
 .btn:hover {
   background-color: #0056b3;
 }
+
 /* pulsanti del carrello */
 .btn-checkout, .btn-continua {
   background-color: #187277 ;
@@ -265,7 +321,7 @@ h2 {
   background-color: #0056b3;
 }
 
-/* Posiziona i pulsanti in basso a destra */
+/* Posiziona i pulsanti in basso */
 .bottom-nav {
   overflow: hidden;
   position: right;
@@ -289,6 +345,7 @@ h2 {
   color: white;
   text-decoration: none;
   font-size: 16px;
+  font-weight: bold;
   padding: 20px 30px;
   border-radius: 20px;
   background-color: #187277; /* Colore del pulsante */

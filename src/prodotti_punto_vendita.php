@@ -10,19 +10,21 @@ if(!has_permission()){
 }
 
 // recupero l'ID del punto vendita
-if(isset($_GET['idPuntoVendita'])) {
+if(isset($_GET['idPuntoVendita']) && is_numeric($_GET['idPuntoVendita'])) {
         // Controllo contenuto del Get
     $PuntoVendita_idPuntoVendita = (int) $_GET['idPuntoVendita'];
+} else {
+    echo "ID Punto Vendita non valido";
+    exit;
 }
 
-// Query per recuperare i prodotti per il punto vendita specifico
+// Query per recuperare i prodotti dal db per il punto vendita specifico
 try{
-    $query = "
-        SELECT a.idArticolo, a.prezzo, a.nome, a.Categoria_idCategoria, a.immagine, pp.quantita, a.descrizione 
-        FROM puntovendita_has_prodotto pp
-        JOIN articolo a ON pp.Prodotto_Articolo_idArticolo = a.idArticolo
-        WHERE pp.PuntoVendita_idPuntoVendita = :idPuntoVendita
-    ";
+    $query = "SELECT a.idArticolo, a.prezzo, a.nome, a.Categoria_idCategoria, a.immagine, pp.quantita, a.descrizione 
+              FROM puntovendita_has_prodotto pp
+              JOIN articolo a ON pp.Prodotto_Articolo_idArticolo = a.idArticolo
+              WHERE pp.PuntoVendita_idPuntoVendita = :idPuntoVendita
+            ";
     $check = $pdo->prepare($query);
     $check->bindParam(':idPuntoVendita', $PuntoVendita_idPuntoVendita, PDO::PARAM_INT);
     $check->execute();
@@ -43,7 +45,7 @@ try{
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Catalogo Punto Vendita</title>
-        <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiungi il tuo CSS per lo stile -->
+        <link rel="stylesheet" href="/CSS/style.css">
     </head>
     <body>
         <header>
@@ -57,6 +59,7 @@ try{
                     <tr>
                         <th>idArticolo</th>
                         <th>Nome</th>
+                        <th>Categoria</th>
                         <th>Prezzo</th>
                         <th>Quantità</th>   
                         <th>Immagine</th>
@@ -69,8 +72,9 @@ try{
                             <tr>
                                 <td><?php echo htmlspecialchars($prodotto['idArticolo'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?php echo htmlspecialchars($prodotto['nome'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <th><?php echo htmlspecialchars($prodotto['prezzo'], ENT_QUOTES, 'UTF-8'); ?></th>
-                                <th><?php echo htmlspecialchars($prodotto['quantita'], ENT_QUOTES, 'UTF-8'); ?></th>
+                                <td><?php echo htmlspecialchars($prodotto['Categoria_idCategoria'], ENT_QUOTES, 'UTF-8')?></td>
+                                <td><?php echo htmlspecialchars($prodotto['prezzo'], ENT_QUOTES, 'UTF-8'); ?>€</td>
+                                <td><?php echo htmlspecialchars($prodotto['quantita'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td>
                                     <?php
                                     if(!empty($prodotto['immagine'])) {
@@ -94,13 +98,14 @@ try{
                     <?php endif; ?>
                 </tbody>
             </table>
-                
 
+            
         </main>
         <nav class="bottom-nav">
             <ul>
-                <li> <a href="puntovendita.php">Torna ai punti vendita</a> </li>
-            </ul>
+                <li><a href="puntovendita.php">Torna ai punti vendita</a></li>
+                <a href="aggiungi_prodotto_puntoVendita.php?idPuntoVendita=<?php echo urlencode($PuntoVendita_idPuntoVendita); ?>"> Inserisci nuovo Articolo</a>
+                </ul>
         </nav>
     </body>
     </html>

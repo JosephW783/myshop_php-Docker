@@ -4,21 +4,12 @@ include 'image.php';
 include 'function.php';
 session_start();  
 
-if(!is_autenticated()){
+if(!is_autenticated() || has_permission()){
     header('Location: login.php');
     $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
 
     exit;
 }
-if(has_permission()){
-    header('Location: login.php');
-    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
-
-    exit;
-}
-
-
-
     try {
         // query per ottenere tutti gli articoli
         $query = "SELECT * FROM articolo";
@@ -39,7 +30,7 @@ if(has_permission()){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Catalogo</title>
-        <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiungi il tuo CSS per lo stile -->
+        <link rel="stylesheet" href="/CSS/style.css"> 
     </head>
     <body>
         <header>
@@ -67,7 +58,7 @@ if(has_permission()){
                         <?php foreach ($articoli as $articolo): ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($articolo['idArticolo'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($articolo['prezzo'], ENT_QUOTES, 'UTF-8'); ?> €</td>
+                                <td><?php echo htmlspecialchars($articolo['prezzo'], ENT_QUOTES, 'UTF-8'); ?>€</td>
                                 <td><?php echo htmlspecialchars($articolo['nome'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?php echo htmlspecialchars($articolo['Categoria_idCategoria'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td>
@@ -108,8 +99,8 @@ if(has_permission()){
 
     <nav class="bottom-nav">
         <ul>
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="carrello.php">Carrello</a></li>
+            <li><a href="dashboard.php">Torna alla Dashboard</a></li>
+            <li><a href="carrello.php">Vai al Carrello</a></li>
         </ul>
     </nav>
 </body>

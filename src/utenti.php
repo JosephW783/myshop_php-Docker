@@ -3,14 +3,8 @@ include 'dbConnection.php';
 include 'function.php';
 session_start();
 
-if(!is_autenticated()){
+if(!is_autenticated() || !has_permission()){
     header('Location: login.php');
-    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
-
-    exit;
-}
-if(!has_permission()){
-    header ('Location: login.php');
     $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
 
     exit;
@@ -38,7 +32,7 @@ try {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Utenti</title>
-        <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiungi il tuo CSS per lo stile -->
+        <link rel="stylesheet" href="/CSS/style.css"> 
     </head>
     <body>
         <header>

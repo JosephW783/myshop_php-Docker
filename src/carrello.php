@@ -3,18 +3,13 @@ include 'function.php';
 session_start();
 
 // verifica se l'utente è autenticato
-if(!is_autenticated()){
+if(!is_autenticated() || has_permission()){
     header('Location: login.php');
     $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
 
     exit;
 }
-if(has_permission()){
-    header('Location: login.php');
-    $_SESSION["fail_message"] = "Non sei autorizzato per questa pagina";
 
-    exit;
-}
 // Verifica se è stata inviata una richiesta per rimuovere un articolo
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idArticolo']) && isset($_POST['action']) && $_POST['action'] === 'remove') {
     $idArticolo = $_POST['idArticolo'];
@@ -64,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idArticolo'], $_POST[
             'quantita' => $quantita
         ];
     }
-    // Aggiungi gli articoli nel carrello all'ordine se l'utente ha cliccato sul link "Conferma Ordine"
-    if (isset($_POST['conferma_ordine'])) {
+    // Aggiungi gli articoli presenti nel carrello all'ordine se l'utente ha cliccato sul link "Conferma Ordine"
+    if (isset($_POST['conferma ordine'])) {
         var_dump($_POST);
         $_SESSION['ordine'] = $_SESSION['carrello'];  // Copia gli articoli nell'ordine
         unset($_SESSION['carrello']);
@@ -152,25 +147,16 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
                     <td><strong><?php echo number_format($totale, 2, ',', '.') . ' €'; ?></strong></td>
                 </tr>
             </tbody>
-        </table>
-
-        
-            <form action="carrello.php" method="post">
-                <input type="hidden" name="conferma_ordine" value="1">
-                <button type="submit" class="btn-checkout">Conferma ordine</button>
-            </form>
-        </table>
-
+        </table> 
+        <nav class="bottom-nav">
+            <ul>
+                <li><a href="ordine.php">Conferma ordine</a></li>
+                <li><a href="catalogo.php">Torna al Catalogo</a></li>
+            </ul>
+        </nav>
     <?php else: ?>
         <p>Il tuo carrello è vuoto. <a href="catalogo.php">Vai al catalogo</a> per aggiungere articoli.</p>
     <?php endif; ?>
 </main>
-
-<nav class="bottom-nav">
-    <ul>
-        <li><a href="catalogo.php">Torna al Catalogo</a></li>
-    </ul>
-</nav>
-
 </body>
 </html>

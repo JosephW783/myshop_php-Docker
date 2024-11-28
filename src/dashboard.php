@@ -24,7 +24,7 @@ $session_user_id = get_session_user_id(); // id utente
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/CSS/style.css"> <!-- Aggiungi il tuo CSS se necessario -->
+    <link rel="stylesheet" href="/CSS/style.css"> 
 </head>
 <body>
 
@@ -33,7 +33,7 @@ $session_user_id = get_session_user_id(); // id utente
     </header>
 
         <section>
-            <h2>Benvenuto <?php echo htmlspecialchars($session_user, ENT_QUOTES, 'UTF-8'); ?>, seleziona un'azione:</h2>
+            <h2>Benvenuto <?php echo htmlspecialchars($session_user, ENT_QUOTES, 'UTF-8'); ?>, seleziona un'azione</h2>
             <!-- Se l'utente ha id = 4, mostra il link per visualizzare i punti vendita -->
             <?php if (has_permission()): ?>
                 <a href="puntovendita.php" class="btn">Visualizza i punti vendita</a> <br>
