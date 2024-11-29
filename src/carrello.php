@@ -60,13 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idArticolo'], $_POST[
         ];
     }
     // Aggiungi gli articoli presenti nel carrello all'ordine se l'utente ha cliccato sul link "Conferma Ordine"
-    if (isset($_POST['conferma ordine'])) {
-        var_dump($_POST);
-        $_SESSION['ordine'] = $_SESSION['carrello'];  // Copia gli articoli nell'ordine
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['conferma_ordine'])) {
+        var_dump($_SESSION['carrello']);
+        $_SESSION['ordine'] = $_SESSION['carrello'];
         unset($_SESSION['carrello']);
-        header("Location: ordine.php"); // Ricarica la pagina dell'ordine
+        header('Location: ordine.php');
         exit;
     }
+        
 
 
     //Dopo aver aggiunto l'articolo, puoi rimanere sulla stessa pagina o fare il redirect
@@ -150,7 +151,7 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
         </table> 
         <nav class="bottom-nav">
             <ul>
-                <li><a href="ordine.php">Conferma ordine</a></li>
+                <li><a href="checkout.php">Conferma Ordine</a></li>
                 <li><a href="catalogo.php">Torna al Catalogo</a></li>
             </ul>
         </nav>
