@@ -11,11 +11,19 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libonig-dev \
     graphviz \
+    coreutils \
+    passwd \
+    curl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql mysqli zip sockets \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+ # installo il composer globalmente
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+ENV PATH="/usr/local/bin:$PATH"
 
 # Copio il file della mia appplicazione nella directory del server
 COPY ./src /var/www/html

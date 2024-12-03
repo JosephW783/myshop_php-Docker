@@ -151,8 +151,8 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
         </table> 
         <nav class="bottom-nav">
             <ul>
-                <li><a href="checkout.php">Conferma Ordine</a></li>
                 <li><a href="catalogo.php">Torna al Catalogo</a></li>
+                <li><a href="checkout.php">Conferma Ordine</a></li>
             </ul>
         </nav>
     <?php else: ?>

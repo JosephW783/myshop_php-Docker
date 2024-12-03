@@ -11,8 +11,6 @@ if(isset($_GET['idArticolo'])){
     if ($check = $pdo->prepare($query)) {
         // Bind the parameter for idArticolo
         $check->bindParam(':idArticolo', $idArticolo, PDO::PARAM_INT);
-        
-        // Execute the query
         $check->execute();
         
         // Fetch the result
@@ -22,7 +20,6 @@ if(isset($_GET['idArticolo'])){
             // Check if image is not empty
             if ($immagine) {
                 // Set the content-type header
-                
                 header("Content-Type: image/jpeg");
                 echo $immagine;
             } else {

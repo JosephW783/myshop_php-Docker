@@ -35,7 +35,7 @@ if(empty($nome) || empty($cognome) || empty($email) || empty($indirizzo) || empt
         'carrello' => $_SESSION['carrello']
     ];
 
-    header('Location:');
+    header('Location: checkout-complete.php'); // pagina completamento dell'ordine
     exit;
 }
 ?>
@@ -45,7 +45,7 @@ if(empty($nome) || empty($cognome) || empty($email) || empty($indirizzo) || empt
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <title>Checkout Page</title>
     <link rel="stylesheet" href="/CSS/style.css">
 </head>
 <body>
